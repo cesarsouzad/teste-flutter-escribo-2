@@ -47,20 +47,26 @@ class _BookListState extends State<BookList> {
       ),
       body: Stack(
         children: [
-          books.isNotEmpty
-              ? GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 8.0,
-                    mainAxisSpacing: 8.0,
-                    childAspectRatio: 0.7,
-                  ),
-                  itemCount: books.length,
-                  itemBuilder: (context, index) {
-                    return buildBookCard(books[index]);
-                  },
-                )
-              : Center(child: CircularProgressIndicator()),
+          Positioned(
+            top: 20.0,
+            left: 0.0,
+            right: 0.0,
+            bottom: 0.0,
+            child: books.isNotEmpty
+                ? GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 8.0,
+                      mainAxisSpacing: 8.0,
+                      childAspectRatio: 0.7,
+                    ),
+                    itemCount: books.length,
+                    itemBuilder: (context, index) {
+                      return buildBookCard(books[index]);
+                    },
+                  )
+                : Center(child: CircularProgressIndicator()),
+          ),
           Positioned(
             top: 0.0,
             left: 0.0,
