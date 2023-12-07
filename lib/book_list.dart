@@ -77,7 +77,7 @@ class _BookListState extends State<BookList> {
           Container(
             color: Color.fromARGB(150, 203, 203, 203),
             height: 140.0,
-            width: double.infinity, // Altura fixa para a parte superior do card
+            width: double.infinity,
             child: Padding(
               padding: const EdgeInsets.all(5.0),
               child: Column(
@@ -106,6 +106,22 @@ class _BookListState extends State<BookList> {
             ),
           ),
           Positioned(
+            top: 0.0,
+            right: 0.0,
+            child: IconButton(
+              icon: Icon(
+                book.isFavorite ? Icons.favorite : Icons.favorite_border,
+                color: Colors.red,
+              ),
+              onPressed: () {
+                // Alternar o status do favorito ao clicar no ícone
+                setState(() {
+                  book.isFavorite = !book.isFavorite;
+                });
+              },
+            ),
+          ),
+          Positioned(
             bottom: 0.0,
             left: 0.0,
             right: 0.0,
@@ -124,7 +140,7 @@ class _BookListState extends State<BookList> {
                 ),
               ),
               onPressed: () {
-                print('Baixar ${book.downUrl}');
+                print('Baixar ${book.downloadUrl}');
               },
               child: Text(
                 'Baixar',
